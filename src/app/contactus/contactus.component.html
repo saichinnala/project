@@ -1,0 +1,242 @@
+  <!----   <div class="container">
+
+<div class="form-group">
+ 
+    <label for="n">enter a name</label>
+    <input type="text" id="n" class="form-control" #ref1>
+    <button  (click)="addName(ref1.value)">
+        add name to list
+    </button>
+</div>
+<div>
+<h1 class="text-center text-info">list of names</h1>
+<ul *ngFor="let n of names; let i=index">
+
+<li>{{n}}
+    <button (click)="delName(i)">x</button>
+</li>
+</ul>
+</div>
+</div>
+<input type="text" [(ngModel)]="p">
+{{p}}
+
+
+
+
+
+
+<div>
+    Date:{{today}}
+</div>
+<div>
+    {{today|date:'short'}}
+</div>
+<div>
+    {{p|titlecase}}
+</div>
+<div>
+    {{salary}}
+</div>
+<div>
+    {{s|square}}
+</div>
+
+
+<div class="row">
+     <div class="col-sm-3"></div>
+      <div class="col-sm-6">
+       <form #ref="ngForm" (ngSubmit)="onSubmit(ref)">
+             <label for="">choose role</label>
+               <div class="form-check">
+                   <input type="radio" name="role" id="adm" class="form-check-input" value="admin" #r="ngModel" ngModel required>
+                     <label for="adm" class="form-check-label">admin</label>
+                </div>
+
+                <div class="form-check">
+                    <input type="radio" name="role" id="usr" class="form-check-input" value="user" ngModel required>
+                    <label for="usr" class="form-check-label">user</label>
+                </div>
+                <div *ngIf="r.invalid && ref.submitted" class="alert alert-danger">
+                     role is required
+                </div>
+      
+                 
+                 <div class="form-group">
+                     <label for="un">username</label>
+                      <input type="text" name="username" id="un" ngModel class="form-control" required #ref2="ngModel">
+                 </div>
+        
+                 <div *ngIf="ref2.touched&&ref2.invalid" class="alert alert-danger">
+                     username is required
+                 </div>
+        
+                 <div class="form-group">
+                     <label for="pw">password</label>
+                     <input type="text" name="password" id="pw" ngModel class="form-control" required pattern="\d[abc]\d.*" #ref3="ngModel">
+                 </div>
+                
+                 <div *ngIf="ref3.invalid && (ref3.dirty||ref3.touched)" class="alert alert-danger">
+                        <div *ngIf="ref3.errors?.required"> name is required</div>
+                        <div *ngIf="ref3.errors?.pattern"> pattern is required</div>
+                 </div>
+
+<div class="text-center">
+<button type="submit" class="btn btn-success" [disabled]="ref.invalid">login</button>
+</div>
+  </form>
+
+
+      </div>
+
+<div class="col sm-3"></div>
+
+
+    </div>--
+<table class="table">
+<thead>
+    <th>Id</th>
+    <th>Email</th>
+    <th>Firstname</th>
+    <th>Lastname</th>
+    <th>Images</th>
+</thead>
+<tr *ngFor="let img of ReceivedData">
+<td>{{img.id}}</td>
+<td>{{img.email}}</td>
+<td>{{img.first_name}}</td>
+<td>{{img.last_name}}</td>
+<td> 
+    <img [src]= img.avatar alt="no img">
+</td>
+</tr>
+</table> ---
+<div class="container">
+<div class="form-group">
+<label for="n">enter name</label>
+<input type="text" id="n" class="form-control" #ref>
+<button (click)="addName(ref.value)">add</button>
+
+</div>
+
+<div>
+<h1 class="text-center text-info">list of names</h1> <hr>
+<ul *ngFor="let n of names; let i =index"> 
+    <li>{{n}}
+    <button class="btn btn-info btn-sm mr-2" (click)="deleteName(i)">del
+    </button>
+<button class="btn btn-success btn-sm mr-2" (click)="editName(n,i)">edit</button></li>
+</ul>
+<div *ngIf="statusOfEditElement">
+    <label for="">edit name</label>
+    <input type="text" [value]=nameToBeEdited #ref1>
+    <button class="btn btn-primary btn-sm ml-5" (click)="saveName(ref1.value)">save</button>
+</div>
+
+</div>
+
+</div> -->
+<div class="container">
+    <h1 class="text-center">EMPLOYEE REGISTRATION</h1>
+    <form #ref="ngForm" (ngSubmit)="sendData(ref)">
+<div class="form-group">
+    <label for="us1">username</label>
+    <input type="text" id="us1" name="username" class="form-control" ngModel>
+</div>
+<div class="form-group">
+    <label for="dob">date of birth</label>
+    <input type="date" id="dob" name="dob" class="form-control" ngModel>
+</div>
+<div class="from-group">
+    <label for="email">
+        Email id
+    </label>
+    <input type="text" id="email" name="email" class="form-control" ngModel>
+</div>
+<div class="form-group">
+    <label for="state" >choose state</label>
+    <select name="state" id="st" class="form-control" ngModel>
+    <option value="ap">Andhra pradesh</option>
+    <option value="acp">arunachael pradesh</option>
+    <hr style="color:brown">
+    <option value="del">delhi</option>
+    <option value="aruna">pondicherry</option>
+</select>
+</div>
+<div class="form-group">
+<label for="skills">choose your skills</label>
+<div class="form-check">
+    <input type="checkbox" name="skills" id="js" value="javascript" class="form-check-input" ngModel>
+    <label for="js" class="form-check-label" >javascript</label>  
+</div>
+<div class="form-check">
+    <input type="checkbox" name="skills" id="ag" value="angular" class="form-check-input" ngModel>
+    <label for="ag" class="form-check-label" >angular</label>  
+</div>
+<div class="form-check">
+    <input type="checkbox" name="skills" id="ht" value="html" class="form-check-input" ngModel>
+    <label for="ht" class="form-check-label" >html</label>  
+</div> </div>
+<div class="form-group">
+    <label for="">choose your gender</label>
+    <div class="form-control">
+        <input type="radio" name="gender" id="m" value="male" class="form-check-input" ngModel>
+        <label for="m" class="form-check-label"> male</label>
+    </div>
+    <div class="form-control">
+        <input type="radio" name="gender" id="f" value="female" class="form-check-input" ngModel>
+        <label for="f" class="form-check-label"> female</label>
+    </div> 
+
+<div class="form-group">
+    <label for="fd">write feedback</label>
+    <textarea name="feedback" id="fd" cols="30" rows="10" class="form-control" ngModel></textarea>
+</div>
+
+</div>
+<div class="text-center">
+    <button type="submit" class="btn btn-success">register</button>
+</div>
+
+    </form>
+
+<h1 class="text-center text-warning" >list of registered employees</h1>
+<table class="table">
+    <thead>
+<th>username</th>
+<th>date of birth</th>
+<th>email</th>
+<th>state</th>
+<th>skills</th>
+<th>gender</th>
+<th>  feedback</th>
+
+    </thead>
+    <tr *ngFor="let emp of employees">
+        <td>{{emp.username}}</td>
+        <td>{{emp.dob}}</td>
+        <td>{{emp.email}}</td>
+        <td>{{emp.state}}</td>
+        <td>{{emp.skills}}</td>
+        <td>{{emp.gender}}</td>
+        <td>{{emp.feedback}}</td>
+
+    </tr>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
